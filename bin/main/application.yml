@@ -1,0 +1,33 @@
+
+spring:
+    profiles:
+        include: oauth
+    
+    output:
+        ansi:
+            enabled: always # make colorful
+    h2:
+        console:
+            enabled: true
+
+    datasource:
+        url: jdbc:h2:tcp://localhost/~/publicss/db        
+        username: sa
+        password: 
+        driver-class-name: org.h2.Driver
+    
+    thymeleaf:
+        cache: false
+
+    jpa: 
+        hibernate:
+            ddl-auto : update
+        properties: 
+            hibernate:
+                default_batch_fetch_size: 1000 # 컬렉션 지연로딩과 N+1 문제 해결을 위한 default_batch_fetch_size 설정
+                # show_sql: TRUE uisng System.out 
+                format_sql : TRUE            
+
+logging:
+    level:        
+        org.hibernate.SQL: debug   #using loger recommend using this not show_sql
